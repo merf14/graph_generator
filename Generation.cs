@@ -45,8 +45,10 @@ namespace trps_app1
             updateXML();
             createPDF();
         }
+        public Generation()
+        { }
 
-        private void updateXML()
+            private void updateXML()
         {
             createFiles();
 
@@ -205,5 +207,37 @@ namespace trps_app1
 
             doc.Close();
         }
+
+        public void delete(String ID)
+        {
+            string pathGenerations = @"data\generations.xml";
+            XDocument xdocGenerations = XDocument.Load(pathGenerations);
+            var generation = xdocGenerations.Element("generations").Elements("generation")
+                .FirstOrDefault(p => p.Attribute("generationID")?.Value == ID);
+            if (generation != null)
+            {
+                generation.Remove();
+                xdocGenerations.Save(pathGenerations);
+            }
+
+            string pathGraphs = @"data\graphs.xml";
+            XDocument xdocGraphs = XDocument.Load(pathGraphs);
+            var graphs = xdocGraphs.Element("graphs").Elements("graph")
+                                    .Where(p => p.Attribute("generationID")?.Value == ID).ToList();
+
+            foreach (var graph in graphs)
+            {
+                graph.Remove();
+            }
+            xdocGraphs.Save(pathGraphs);
+
+            string path = @"data\" + ID + ".pdf";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+        }
     }
+
 }

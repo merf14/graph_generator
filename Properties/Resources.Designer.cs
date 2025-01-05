@@ -59,15 +59,5 @@ namespace trps_app1.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap neural_network_13061983 {
-            get {
-                object obj = ResourceManager.GetObject("neural-network_13061983", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

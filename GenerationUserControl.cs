@@ -1,10 +1,13 @@
-﻿using System;
+﻿using iTextSharp.xmp.impl;
+using Org.BouncyCastle.Asn1.Crmf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -82,37 +85,33 @@ namespace trps_app1
             int height = (nVertexes + 1) * 25;
 
             Panel panelGraph = new Panel();
-            Label labelLength = new Label();
-            Label labelPath = new Label();
+            System.Windows.Forms.Label labelLength = new System.Windows.Forms.Label();
+            System.Windows.Forms.Label labelPath = new System.Windows.Forms.Label();
             DataGridView matrix = new DataGridView();
-            Label labelNumber = new Label();
-            Label labelGeneration = new Label();
+            System.Windows.Forms.Label labelNumber = new System.Windows.Forms.Label();
+            System.Windows.Forms.Label labelGeneration = new System.Windows.Forms.Label();
 
             panelGraph.BackColor = SystemColors.ControlLightLight;
             panelGraph.Name = "panelGraph" + graphID;
             panelGraph.Size = new Size(860, height + 60);
-            panelGraph.TabIndex = 10;
             panelGraph.Visible = true;
 
             labelLength.AutoSize = true;
             labelLength.Location = new Point(width + 20, 108);
             labelLength.Name = "labelLength" + graphID;
             //labelLength.Size = new Size(233, 25);
-            labelLength.TabIndex = 12;
             labelLength.Text = "Длина кратчайшего пути: " + shortestPathLength;
 
             labelPath.AutoSize = true;
             labelPath.Location = new Point(width + 20, 37);
             labelPath.Name = "labelPath" + graphID;
             //labelPath.Size = new Size(168, 25);
-            labelPath.TabIndex = 11;
             labelPath.Text = "Кратчайший путь: " + Environment.NewLine + shortestPath;
 
             labelNumber.AutoSize = true;
             labelNumber.Location = new Point(3, 0);
             labelNumber.Name = "labelNumber" + graphID;
             labelNumber.Size = new Size(120, 25);
-            labelNumber.TabIndex = 9;
             labelNumber.Text = "Вариант №" + graphID;
 
             matrix.BackgroundColor = Color.White;
@@ -123,14 +122,15 @@ namespace trps_app1
             matrix.Name = "matrix" + graphID;
             matrix.RowTemplate.Height = 25;
             matrix.Size = new Size(width, height);
-            matrix.TabIndex = 10;
             matrix.RowHeadersWidth = 60;
             matrix.Font = new Font("Segoe UI Semibold", 11);
             matrix.ReadOnly = true;
+            matrix.Enabled = false; ;
             matrix.AllowUserToResizeRows = false;
             matrix.AllowUserToResizeColumns = false;
             matrix.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             matrix.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            matrix.RowsDefaultCellStyle.SelectionBackColor = SystemColors.ControlLightLight;
 
             for (int i = 0; i < nVertexes; i++)
             {
@@ -182,12 +182,63 @@ namespace trps_app1
         private void buttonPDF_Click(object sender, EventArgs e)
         {
             string path = Path.Combine(Directory.GetCurrentDirectory(), "data", generationID.ToString() + ".pdf");
-            var p = new Process();
-            p.StartInfo = new ProcessStartInfo(path)
+            if (!File.Exists(path))
             {
-                UseShellExecute = true
-            };
-            p.Start();
+                DialogResult result = MessageBox.Show(
+                "Файл не найден.",
+                "Ошибка",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error,
+                MessageBoxDefaultButton.Button1);
+            }
+            else
+            {
+                var p = new Process();
+                p.StartInfo = new ProcessStartInfo(path)
+                {
+                    UseShellExecute = true
+                };
+                p.Start();
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Вы уверены, что хотите удалить генерацию " + labelName.Text + "?",
+                "Удаление",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                Generation generation = new Generation();
+                generation.delete(generationID);
+                Visible = false;
+                MainUC.showGenerations();
+                MainUC.Visible = true;
+            }
+        }
+
+        private void labelHide_Click(object sender, EventArgs e)
+        {
+            labelHide.Visible = false;
+            groupParametrs.Height = 22;
+            labelParametrs.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point);
+            labelParametrs.Cursor = Cursors.Hand;
+            groupGraphs.Location = new Point(60, 144);
+            groupGraphs.Size = new Size(894, 515);
+        }
+
+        private void labelParametrs_Click(object sender, EventArgs e)
+        {
+            groupParametrs.Height = 267;
+            labelParametrs.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelHide.Visible = true;
+            labelParametrs.Cursor = Cursors.Default;
+            groupGraphs.Location = new Point(60, 389);
+            groupGraphs.Size = new Size(894, 270);
         }
     }
 }

@@ -43,10 +43,10 @@
             buttonCreate.FlatStyle = FlatStyle.Flat;
             buttonCreate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonCreate.ForeColor = Color.FromArgb(10, 60, 0);
-            buttonCreate.Location = new Point(60, 64);
+            buttonCreate.Location = new Point(284, 43);
             buttonCreate.Name = "buttonCreate";
-            buttonCreate.Size = new Size(221, 56);
-            buttonCreate.TabIndex = 0;
+            buttonCreate.Size = new Size(446, 56);
+            buttonCreate.TabIndex = 1;
             buttonCreate.Text = "Создать генерацию";
             buttonCreate.UseVisualStyleBackColor = false;
             buttonCreate.Click += buttonCreate_Click;
@@ -56,9 +56,9 @@
             groupGenerations.Controls.Add(panelGenerations);
             groupGenerations.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             groupGenerations.ForeColor = Color.FromArgb(10, 60, 0);
-            groupGenerations.Location = new Point(60, 139);
+            groupGenerations.Location = new Point(63, 105);
             groupGenerations.Name = "groupGenerations";
-            groupGenerations.Size = new Size(894, 716);
+            groupGenerations.Size = new Size(894, 555);
             groupGenerations.TabIndex = 1;
             groupGenerations.TabStop = false;
             groupGenerations.Text = "Ваши генерации";
@@ -69,7 +69,7 @@
             panelGenerations.Dock = DockStyle.Fill;
             panelGenerations.Location = new Point(3, 25);
             panelGenerations.Name = "panelGenerations";
-            panelGenerations.Size = new Size(888, 688);
+            panelGenerations.Size = new Size(888, 527);
             panelGenerations.TabIndex = 0;
             // 
             // MainUserControl
@@ -79,7 +79,7 @@
             Controls.Add(buttonCreate);
             Controls.Add(groupGenerations);
             Name = "MainUserControl";
-            Size = new Size(1014, 920);
+            Size = new Size(1014, 719);
             groupGenerations.ResumeLayout(false);
             ResumeLayout(false);
         }

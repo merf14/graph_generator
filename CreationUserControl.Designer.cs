@@ -55,7 +55,7 @@
             linkToMain.Location = new Point(66, 42);
             linkToMain.Name = "linkToMain";
             linkToMain.Size = new Size(142, 15);
-            linkToMain.TabIndex = 8;
+            linkToMain.TabIndex = 1;
             linkToMain.TabStop = true;
             linkToMain.Text = "← Вернуться на главную";
             linkToMain.LinkClicked += linkToMain_LinkClicked;
@@ -69,10 +69,10 @@
             buttonCreate.FlatStyle = FlatStyle.Flat;
             buttonCreate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonCreate.ForeColor = Color.FromArgb(10, 60, 0);
-            buttonCreate.Location = new Point(754, 691);
+            buttonCreate.Location = new Point(754, 604);
             buttonCreate.Name = "buttonCreate";
             buttonCreate.Size = new Size(200, 50);
-            buttonCreate.TabIndex = 0;
+            buttonCreate.TabIndex = 6;
             buttonCreate.Text = "Сгенерировать";
             buttonCreate.UseVisualStyleBackColor = false;
             buttonCreate.Click += buttonCreate_Click;
@@ -82,16 +82,17 @@
             TB_Name.BackColor = Color.White;
             TB_Name.BorderStyle = BorderStyle.FixedSingle;
             TB_Name.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            TB_Name.Location = new Point(181, 139);
+            TB_Name.Location = new Point(181, 123);
+            TB_Name.MaxLength = 24;
             TB_Name.Name = "TB_Name";
             TB_Name.Size = new Size(773, 33);
-            TB_Name.TabIndex = 4;
+            TB_Name.TabIndex = 2;
             // 
             // labelName
             // 
             labelName.AutoSize = true;
             labelName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labelName.Location = new Point(66, 139);
+            labelName.Location = new Point(66, 123);
             labelName.Name = "labelName";
             labelName.Size = new Size(95, 25);
             labelName.TabIndex = 5;
@@ -109,9 +110,9 @@
             groupBox1.Controls.Add(labelNVertexes);
             groupBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.ForeColor = SystemColors.ControlText;
-            groupBox1.Location = new Point(60, 198);
+            groupBox1.Location = new Point(60, 172);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(894, 444);
+            groupBox1.Size = new Size(894, 406);
             groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
             groupBox1.Text = "                ";
@@ -120,10 +121,12 @@
             // 
             TB_template.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             TB_template.Location = new Point(275, 143);
+            TB_template.MaxLength = 500;
             TB_template.Multiline = true;
             TB_template.Name = "TB_template";
-            TB_template.Size = new Size(584, 261);
-            TB_template.TabIndex = 12;
+            TB_template.ScrollBars = ScrollBars.Vertical;
+            TB_template.Size = new Size(584, 233);
+            TB_template.TabIndex = 5;
             // 
             // labelTemplate
             // 
@@ -142,7 +145,7 @@
             nGraphsBox.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nGraphsBox.Name = "nGraphsBox";
             nGraphsBox.Size = new Size(76, 29);
-            nGraphsBox.TabIndex = 10;
+            nGraphsBox.TabIndex = 3;
             nGraphsBox.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // labelNGraphs
@@ -173,7 +176,7 @@
             nVertexesBox.Minimum = new decimal(new int[] { 7, 0, 0, 0 });
             nVertexesBox.Name = "nVertexesBox";
             nVertexesBox.Size = new Size(76, 29);
-            nVertexesBox.TabIndex = 2;
+            nVertexesBox.TabIndex = 4;
             nVertexesBox.Value = new decimal(new int[] { 7, 0, 0, 0 });
             // 
             // labelNVertexes
@@ -190,7 +193,7 @@
             labelHeader.AutoSize = true;
             labelHeader.Font = new Font("Segoe UI Semibold", 16.25F, FontStyle.Bold, GraphicsUnit.Point);
             labelHeader.ForeColor = Color.FromArgb(10, 60, 0);
-            labelHeader.Location = new Point(66, 82);
+            labelHeader.Location = new Point(66, 74);
             labelHeader.Name = "labelHeader";
             labelHeader.Size = new Size(298, 30);
             labelHeader.TabIndex = 9;
@@ -201,7 +204,7 @@
             labelMessage.AutoSize = true;
             labelMessage.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             labelMessage.ForeColor = Color.FromArgb(192, 0, 0);
-            labelMessage.Location = new Point(426, 709);
+            labelMessage.Location = new Point(432, 622);
             labelMessage.Name = "labelMessage";
             labelMessage.Size = new Size(305, 17);
             labelMessage.TabIndex = 10;
@@ -220,7 +223,7 @@
             Controls.Add(TB_Name);
             Controls.Add(buttonCreate);
             Name = "CreationUserControl";
-            Size = new Size(1014, 920);
+            Size = new Size(1014, 719);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nGraphsBox).EndInit();

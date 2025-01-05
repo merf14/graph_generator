@@ -24,3 +24,5 @@ C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Debug\net6.
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Debug\net6.0-windows\itextsharp.dll
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Debug\net6.0-windows\System.Text.Encoding.CodePages.dll
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
+C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Debug\net6.0-windows\Resources\delete.bmp
+C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Debug\net6.0-windows\Resources\delete_red.bmp

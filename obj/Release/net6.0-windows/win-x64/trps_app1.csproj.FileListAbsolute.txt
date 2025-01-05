@@ -521,3 +521,5 @@ C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\obj\Release\net
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\obj\Release\net6.0-windows\win-x64\trps_app1.pdb
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\obj\Release\net6.0-windows\win-x64\trps_app1.genruntimeconfig.cache
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\obj\Release\net6.0-windows\win-x64\ref\trps_app1.dll
+C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Release\net6.0-windows\win-x64\Resources\delete.bmp
+C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Release\net6.0-windows\win-x64\Resources\delete_red.bmp

@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerationUserControl));
             linkToMain = new LinkLabel();
             labelName = new Label();
             groupParametrs = new GroupBox();
+            labelHide = new Label();
             TB_template = new TextBox();
             labelTemplate = new Label();
             labelNGraphs = new Label();
@@ -40,6 +42,7 @@
             labelGeneration = new Label();
             panelGraphs = new FlowLayoutPanel();
             buttonPDF = new Button();
+            buttonDelete = new Button();
             groupParametrs.SuspendLayout();
             groupGraphs.SuspendLayout();
             SuspendLayout();
@@ -52,7 +55,7 @@
             linkToMain.Location = new Point(52, 33);
             linkToMain.Name = "linkToMain";
             linkToMain.Size = new Size(142, 15);
-            linkToMain.TabIndex = 9;
+            linkToMain.TabIndex = 1;
             linkToMain.TabStop = true;
             linkToMain.Text = "← Вернуться на главную";
             linkToMain.LinkClicked += linkToMain_LinkClicked;
@@ -71,6 +74,7 @@
             // groupParametrs
             // 
             groupParametrs.BackColor = SystemColors.Control;
+            groupParametrs.Controls.Add(labelHide);
             groupParametrs.Controls.Add(TB_template);
             groupParametrs.Controls.Add(labelTemplate);
             groupParametrs.Controls.Add(labelNGraphs);
@@ -85,15 +89,30 @@
             groupParametrs.TabStop = false;
             groupParametrs.Text = "                ";
             // 
+            // labelHide
+            // 
+            labelHide.AutoSize = true;
+            labelHide.Cursor = Cursors.Hand;
+            labelHide.Font = new Font("Segoe UI", 9.75F, FontStyle.Underline, GraphicsUnit.Point);
+            labelHide.ForeColor = Color.FromArgb(10, 60, 0);
+            labelHide.Location = new Point(837, 14);
+            labelHide.Name = "labelHide";
+            labelHide.Size = new Size(51, 17);
+            labelHide.TabIndex = 4;
+            labelHide.Text = "Скрыть";
+            labelHide.Click += labelHide_Click;
+            // 
             // TB_template
             // 
             TB_template.BackColor = Color.WhiteSmoke;
             TB_template.BorderStyle = BorderStyle.FixedSingle;
+            TB_template.Cursor = Cursors.IBeam;
             TB_template.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             TB_template.Location = new Point(12, 130);
             TB_template.Multiline = true;
             TB_template.Name = "TB_template";
             TB_template.ReadOnly = true;
+            TB_template.ScrollBars = ScrollBars.Vertical;
             TB_template.Size = new Size(866, 117);
             TB_template.TabIndex = 12;
             // 
@@ -125,8 +144,9 @@
             labelParametrs.Location = new Point(6, 0);
             labelParametrs.Name = "labelParametrs";
             labelParametrs.Size = new Size(92, 21);
-            labelParametrs.TabIndex = 8;
+            labelParametrs.TabIndex = 5;
             labelParametrs.Text = "Параметры";
+            labelParametrs.Click += labelParametrs_Click;
             // 
             // labelNVertexes
             // 
@@ -147,7 +167,7 @@
             groupGraphs.ForeColor = SystemColors.ControlText;
             groupGraphs.Location = new Point(60, 389);
             groupGraphs.Name = "groupGraphs";
-            groupGraphs.Size = new Size(894, 478);
+            groupGraphs.Size = new Size(894, 270);
             groupGraphs.TabIndex = 14;
             groupGraphs.TabStop = false;
             groupGraphs.Text = "               ";
@@ -170,7 +190,7 @@
             panelGraphs.Location = new Point(3, 29);
             panelGraphs.MaximumSize = new Size(888, 10000);
             panelGraphs.Name = "panelGraphs";
-            panelGraphs.Size = new Size(888, 446);
+            panelGraphs.Size = new Size(888, 238);
             panelGraphs.TabIndex = 11;
             // 
             // buttonPDF
@@ -182,25 +202,48 @@
             buttonPDF.FlatStyle = FlatStyle.Flat;
             buttonPDF.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             buttonPDF.ForeColor = Color.FromArgb(10, 60, 0);
-            buttonPDF.Location = new Point(828, 61);
+            buttonPDF.Image = (Image)resources.GetObject("buttonPDF.Image");
+            buttonPDF.ImageAlign = ContentAlignment.TopCenter;
+            buttonPDF.Location = new Point(860, 63);
             buttonPDF.Name = "buttonPDF";
-            buttonPDF.Size = new Size(122, 51);
-            buttonPDF.TabIndex = 15;
-            buttonPDF.Text = "Открыть PDF-файл";
+            buttonPDF.Size = new Size(42, 42);
+            buttonPDF.TabIndex = 2;
+            buttonPDF.TextImageRelation = TextImageRelation.TextBeforeImage;
             buttonPDF.UseVisualStyleBackColor = false;
             buttonPDF.Click += buttonPDF_Click;
+            // 
+            // buttonDelete
+            // 
+            buttonDelete.BackColor = SystemColors.ControlLight;
+            buttonDelete.FlatAppearance.BorderColor = Color.FromArgb(10, 60, 0);
+            buttonDelete.FlatAppearance.MouseDownBackColor = SystemColors.ActiveBorder;
+            buttonDelete.FlatAppearance.MouseOverBackColor = SystemColors.ScrollBar;
+            buttonDelete.FlatStyle = FlatStyle.Flat;
+            buttonDelete.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDelete.ForeColor = Color.FromArgb(10, 60, 0);
+            buttonDelete.Image = (Image)resources.GetObject("buttonDelete.Image");
+            buttonDelete.ImageAlign = ContentAlignment.BottomCenter;
+            buttonDelete.Location = new Point(912, 63);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(42, 42);
+            buttonDelete.TabIndex = 3;
+            buttonDelete.TextAlign = ContentAlignment.MiddleLeft;
+            buttonDelete.TextImageRelation = TextImageRelation.TextBeforeImage;
+            buttonDelete.UseVisualStyleBackColor = false;
+            buttonDelete.Click += buttonDelete_Click;
             // 
             // GenerationUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(buttonDelete);
             Controls.Add(buttonPDF);
             Controls.Add(groupGraphs);
             Controls.Add(groupParametrs);
             Controls.Add(labelName);
             Controls.Add(linkToMain);
             Name = "GenerationUserControl";
-            Size = new Size(1014, 920);
+            Size = new Size(1014, 719);
             groupParametrs.ResumeLayout(false);
             groupParametrs.PerformLayout();
             groupGraphs.ResumeLayout(false);
@@ -223,5 +266,7 @@
         private Label labelGeneration;
         private FlowLayoutPanel panelGraphs;
         private Button buttonPDF;
+        private Button buttonDelete;
+        private Label labelHide;
     }
 }

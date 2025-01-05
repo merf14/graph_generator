@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             creationUserControl1 = new CreationUserControl();
             mainUserControl1 = new MainUserControl();
             SuspendLayout();
@@ -37,7 +38,7 @@
             creationUserControl1.Dock = DockStyle.Fill;
             creationUserControl1.Location = new Point(0, 0);
             creationUserControl1.Name = "creationUserControl1";
-            creationUserControl1.Size = new Size(1014, 920);
+            creationUserControl1.Size = new Size(1014, 719);
             creationUserControl1.TabIndex = 0;
             creationUserControl1.Visible = false;
             // 
@@ -46,7 +47,7 @@
             mainUserControl1.Dock = DockStyle.Fill;
             mainUserControl1.Location = new Point(0, 0);
             mainUserControl1.Name = "mainUserControl1";
-            mainUserControl1.Size = new Size(1014, 920);
+            mainUserControl1.Size = new Size(1014, 719);
             mainUserControl1.TabIndex = 1;
             // 
             // MainForm
@@ -54,11 +55,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1014, 920);
+            ClientSize = new Size(1014, 719);
             Controls.Add(mainUserControl1);
             Controls.Add(creationUserControl1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(1030, 758);
+            MinimumSize = new Size(1030, 758);
             Name = "MainForm";
-            Text = "MainForm";
+            Text = "Генератор графов";
             Load += MainForm_Load;
             ResumeLayout(false);
         }

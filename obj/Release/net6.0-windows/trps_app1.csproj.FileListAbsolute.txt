@@ -24,3 +24,5 @@ C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\obj\Release\net
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\obj\Release\net6.0-windows\trps_app1.MainUserControl.resources
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\obj\Release\net6.0-windows\trps_app1.Properties.Resources.resources
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\obj\Release\net6.0-windows\trps_app1.csproj.CopyComplete
+C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Release\net6.0-windows\Resources\delete.bmp
+C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Release\net6.0-windows\Resources\delete_red.bmp

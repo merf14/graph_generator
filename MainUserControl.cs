@@ -1,13 +1,16 @@
-﻿using System;
+﻿using iTextSharp.xmp.impl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using trps_app1.Properties;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace trps_app1
@@ -93,12 +96,79 @@ namespace trps_app1
             label.MouseEnter += new EventHandler(labelMouseMove);
             label.MouseLeave += new EventHandler(labelMouseLeave);
 
+            Button delete = new Button();
+            delete.FlatStyle = FlatStyle.Flat;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUserControl));
+            delete.Image = (System.Drawing.Image)resources.GetObject("trash_can");
+            delete.Name = "delete" + generationID;
+            delete.Visible = true;
+            delete.Size = new Size(44, 40);
+            delete.Text = "";
+            delete.Font = new Font("Segoe UI Semibold", 11);
+            delete.ForeColor = Color.FromKnownColor(KnownColor.ControlLightLight);
+            delete.Location = new Point(237, 177);
+            delete.Cursor = Cursors.Hand;
+            delete.Click += new EventHandler(deleteClick);
+            delete.MouseEnter += new EventHandler(deleteMouseMove);
+            delete.MouseLeave += new EventHandler(deletelMouseLeave);
+            delete.UseVisualStyleBackColor = true;
+            delete.FlatAppearance.MouseDownBackColor = Color.FromArgb(240, 255, 240);
+            delete.FlatAppearance.MouseOverBackColor = Color.FromArgb(240, 255, 240);
+            delete.FlatAppearance.BorderSize = 0;
+            delete.TabIndex = 2;
+
             panel.Controls.Add(label);
+            panel.Controls.Add(delete);
 
             panelGenerations.Controls.Add(panel);
             panel.BringToFront();
         }
 
+        private void deleteClick(object sender, EventArgs e)
+        {
+            Button delete = sender as Button;
+            string name = delete.Name;
+            string id = name.Substring(6, name.Length - 6);
+            Control panel = panelGenerations.Controls[id];
+            Control label = panel.Controls["label"+id];
+            DialogResult result = MessageBox.Show(
+                "Вы уверены, что хотите удалить генерацию "+ label.Text+"?",
+                "Удаление",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                Generation generation = new Generation();
+                generation.delete(id);
+                showGenerations();
+            }
+        }
+        private void deleteMouseMove(object sender, EventArgs e)
+        {
+            Button delete = sender as Button;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUserControl));
+            delete.Image = (System.Drawing.Image)resources.GetObject("trash_can_red");
+            string name = delete.Name;
+            name = name.Substring(6, name.Length - 6);
+            Control panel = panelGenerations.Controls[name];
+            panel.BackColor = Color.FromArgb(240, 255, 240);
+        }
+
+        private void deletelMouseLeave(object sender, EventArgs e)
+        {
+            Button delete = sender as Button;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUserControl));
+            delete.Image = (System.Drawing.Image)resources.GetObject("trash_can");
+            string name = delete.Name;
+            name = name.Substring(6, name.Length - 6);
+            Control panel = panelGenerations.Controls[name];
+            if (panel != null)
+            {
+                panel.BackColor = Color.FromKnownColor(KnownColor.ControlLightLight);
+            }
+        }
         private void panelClick(object sender, EventArgs e)
         {
             Panel panel = sender as Panel;

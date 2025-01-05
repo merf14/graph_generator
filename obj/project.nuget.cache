@@ -1,17 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "T0KwrRzSuLHxRA+dBxX0FEn1lxhI5Se8sDQk3M+xOzuWoB7Kf7hjE3rS6a8jh/RFgasA9d2pPJxR6or1G280fQ==",
+  "dgSpecHash": "G1SM1klI2xmUW/MGP3DU7KjepX3X3+RL7b5YRHZN7EYEzQ4Fa/rO6rAntTxvLeYUfZ3m4c9lJJxN3xaf4ACx3w==",
   "success": true,
   "projectFilePath": "C:\\Users\\o\\Desktop\\Курсовая ТРПС\\trps_app1\\trps_app1\\trps_app1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\o\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
     "C:\\Users\\o\\.nuget\\packages\\itextsharp\\5.5.13.4\\itextsharp.5.5.13.4.nupkg.sha512",
     "C:\\Users\\o\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\o\\.nuget\\packages\\system.text.encoding.codepages\\8.0.0\\system.text.encoding.codepages.8.0.0.nupkg.sha512",
-    "C:\\Users\\o\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.16\\microsoft.netcore.app.runtime.win-x64.6.0.16.nupkg.sha512",
-    "C:\\Users\\o\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.16\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.16.nupkg.sha512",
-    "C:\\Users\\o\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.16\\microsoft.aspnetcore.app.runtime.win-x64.6.0.16.nupkg.sha512",
-    "C:\\Users\\o\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\6.0.16\\microsoft.netcore.app.crossgen2.win-x64.6.0.16.nupkg.sha512"
+    "C:\\Users\\o\\.nuget\\packages\\system.text.encoding.codepages\\8.0.0\\system.text.encoding.codepages.8.0.0.nupkg.sha512"
   ],
   "logs": [
     {

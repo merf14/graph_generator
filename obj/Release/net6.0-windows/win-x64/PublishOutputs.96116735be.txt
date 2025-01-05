@@ -1,4 +1,6 @@
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Release\net6.0-windows\win-x64\publish\trps_app1.pdb
+C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Release\net6.0-windows\win-x64\publish\Resources\delete.bmp
+C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Release\net6.0-windows\win-x64\publish\Resources\delete_red.bmp
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Release\net6.0-windows\win-x64\publish\D3DCompiler_47_cor3.dll
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Release\net6.0-windows\win-x64\publish\PenImc_cor3.dll
 C:\Users\o\Desktop\Курсовая ТРПС\trps_app1\trps_app1\bin\Release\net6.0-windows\win-x64\publish\PresentationNative_cor3.dll

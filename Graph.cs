@@ -16,13 +16,12 @@ namespace trps_app1
         private int maxPath;
         private List<int> usingVertexes;
         private List<int> shortestPathTemp;
-        private List<int> shortestPathSave;
         private int[] pathsToVertexes;
 
         public int[,] weightsMatrix;
-        public int sourceVertex;
-        public int lastVertex;
-        public int targetVertex;
+        private int sourceVertex;
+        private int lastVertex;
+        private int targetVertex;
         public int shortestPathLength;
         public List<int> shortestPath;
 
@@ -39,7 +38,6 @@ namespace trps_app1
             this.shortestPath = new List<int>();
             this.shortestPathTemp = new List<int>();
             this.usingVertexes = new List<int>();
-            this.shortestPathSave = new List<int>();
             this.pathsToVertexes = new int[nVertexes];
             for (int i = 1; i < pathsToVertexes.Length; i++)
             {
@@ -97,7 +95,7 @@ namespace trps_app1
             }
 
             // Добавление дополнительных ребер с большим весом
-            int nBigEdges = rnd.Next(3, 5);
+            int nBigEdges = rnd.Next(maxVertex-3, maxVertex);
             int v1, v2,k;
             int j = 0;
             while (j<= nBigEdges)
@@ -108,23 +106,6 @@ namespace trps_app1
                      j++;
             }
 
-            v1 = rnd.Next(0, maxVertex);
-            v2 = maxVertex;
-            j = 0;
-            while (!(buildExtraEdge(v1, v2) || (j==5)))
-            {
-                v1 = rnd.Next(0, maxVertex);
-                j++;
-            }
-
-            v1 = maxVertex;
-            v2 = rnd.Next(0, maxVertex);
-            j = 0;
-            while (!(buildExtraEdge(v1, v2) || (j == 5)))
-            {
-                v2 = rnd.Next(0, maxVertex);
-                j++;
-            }
 
             checkIsolated();
 
@@ -135,17 +116,31 @@ namespace trps_app1
         {
             if (weightsMatrix[v1, v2] == 0 && v1!=v2 && v2!=targetVertex)
             {
-                int k = pathsToVertexes[v2] - pathsToVertexes[v1] + 1;
-                if ((k>0)&&(k <= 10))
+                if ((pathsToVertexes[v1] == maxPath * 3) && (pathsToVertexes[v2] == maxPath * 3))
                 {
-                    weightsMatrix[v1, v2] = rnd.Next(k, k + 5);
+                    return false;
+                }
+                else if ((pathsToVertexes[v1]== maxPath * 3)|| (pathsToVertexes[v2] == maxPath * 3))
+                {
+                    int w = rnd.Next(1, 10);
+                    weightsMatrix[v1, v2] = w;
+                    pathsToVertexes[v2] = Math.Min(pathsToVertexes[v2], pathsToVertexes[v1] + w);
                     return true;
                 }
-                else if (k <= 0)
+                else
                 {
-                    weightsMatrix[v1, v2] = rnd.Next(1, 10);
-                    return true;
-                }
+                    int k = pathsToVertexes[v2] - pathsToVertexes[v1] + 1;
+                    if ((k > 0) && (k <= 10))
+                    {
+                        weightsMatrix[v1, v2] = rnd.Next(k, k + 5);
+                        return true;
+                    }
+                    else if ((k <= 0))
+                    {
+                        weightsMatrix[v1, v2] = rnd.Next(1, 10);
+                        return true;
+                    }
+                }            
             }
             return false;
         }
@@ -158,29 +153,25 @@ namespace trps_app1
                 int s_from = 0;
                 for (int j = 0; j <= maxVertex; j++)
                 {
-                    s_to += weightsMatrix[i, j];
-                    s_from += weightsMatrix[j, i];
+                    s_to += weightsMatrix[j, i];
+                    s_from += weightsMatrix[i, j];
                 }
                 if (s_to == 0)
                 {
                     int v1 = rnd.Next(0, maxVertex);
                     int v2 = i;
-                    int j = 0;
-                    while (!(buildExtraEdge(v1, v2) || (j == 5)))
+                    while (!(buildExtraEdge(v1, v2)))
                     {
                         v1 = rnd.Next(0, maxVertex);
-                        j++;
                     }
                 }
                 if (s_from == 0)
                 {
                     int v2 = rnd.Next(0, maxVertex);
                     int v1 = i;
-                    int j = 0;
-                    while (!(buildExtraEdge(v1, v2) || (j == 5)))
+                    while (!(buildExtraEdge(v1, v2)))
                     {
-                        v2 = rnd.Next(0, maxVertex);
-                        j++;
+                        v2 = rnd.Next(0, maxVertex); 
                     }
                 }
             }
@@ -198,8 +189,6 @@ namespace trps_app1
             }
 
             shortestPathTemp.Reverse();
-
-            int previous_i = source;
         }
 
         private int buildEdge(ref int path, int weight, int vertex, int source, int target, int pathNumber)
@@ -256,6 +245,7 @@ namespace trps_app1
             int minPath;
             int[] paths = new int[n];
             int[] pathsWithoutLast = new int[n];
+            List<int> shortestPathSave = new List<int>();
 
             minPath = maxPath;
             generatePaths(ref paths, n, maxPath / 4, maxPath / 2, false);
